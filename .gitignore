@@ -3,3 +3,6 @@
 /02-client-backup/XIV-Mobile-Rips/com.tencent.tmgp.fmgame.zip
 /03-tools/windows/ghidra_12.1.4_PUBLIC_20260921.zip
 /04-apk-analysis/apk-unpacked/lib/arm64-v8a/libUE4.so
+
+# Local staging area for GitHub Release attachments
+/Release-Assets/
