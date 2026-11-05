@@ -1,0 +1,1290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Animation Compression Library (ACL) support" />
+	<meta name="robots" content="noindex" />
+	<meta name="keywords" content="PHP, MySQL, bulletin, board, free, open, source, smf, simple, machines, forum" />
+	<script language="JavaScript" type="text/javascript" src="https://www.gildor.org/smf/Themes/default/script.js?fin11"></script>
+	<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
+		var smf_theme_url = "https://www.gildor.org/smf/Themes/leviathan_11final";
+		var smf_images_url = "https://www.gildor.org/smf/Themes/leviathan_11final/images";
+		var smf_scripturl = "https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;";
+		var smf_iso_case_folding = false;
+		var smf_charset = "UTF-8";
+	// ]]></script>
+	<title>Animation Compression Library (ACL) support</title>
+	<link rel="canonical" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" media="(max-width: 800px)" href="https://www.gildor.org/smf/Themes/leviathan_11final/style_grey_mobile.css?rc7" />
+	<link rel="stylesheet" type="text/css" media="(min-width: 800px)" href="https://www.gildor.org/smf/Themes/leviathan_11final/style_grey.css?rc7" />
+	<link rel="stylesheet" type="text/css" href="https://www.gildor.org/smf/Themes/default/print.css?fin11" media="print" />
+	<link rel="help" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=help" target="_blank" />
+	<link rel="search" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=search" />
+	<link rel="contents" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;" />
+	<link rel="alternate" type="application/rss+xml" title="Gildor's Forums - RSS" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;type=rss;action=.xml" />
+	<link rel="next" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.15" />
+	<link rel="index" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;board=38.0" /><style type="text/css"><!--
+	body
+	{
+		font-size: small;
+	}
+	 --></style><style type="text/css"><!--
+		#maintable{
+			padding: 0;
+			margin: auto;
+			width: 1020px;
+		}
+	 --></style><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
+		var current_header = false;
+
+		function shrinkHeader(mode)
+		{
+			document.cookie = "upshrink=" + (mode ? 1 : 0);
+			document.getElementById("upshrink").src = smf_images_url + (mode ? "/upshrink2.gif" : "/upshrink.gif");
+
+			document.getElementById("lowersection").style.display = mode ? "none" : "";
+
+			current_header = mode;
+		}
+	// ]]></script>
+	<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
+		var current_header2 = false;
+
+		function shrinkHeader2(mode)
+		{
+			document.cookie = "upshrink2=" + (mode ? 1 : 0);
+			document.getElementById("upshrink2").src = smf_images_url + (mode ? "/upshrink2.gif" : "/upshrink.gif");
+
+			document.getElementById("topsection").style.display = mode ? "none" : "";
+
+			current_header2 = mode;
+		}
+	// ]]></script>
+		<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
+			var current_header_ic = false;
+
+			function shrinkHeaderIC(mode)
+			{
+				document.cookie = "upshrinkIC=" + (mode ? 1 : 0);
+				document.getElementById("upshrink_ic").src = smf_images_url + (mode ? "/expand.gif" : "/collapse.gif");
+
+				document.getElementById("upshrinkHeaderIC").style.display = mode ? "none" : "";
+
+				current_header_ic = mode;
+			}
+
+			var mysize = "small";
+
+			function setmysize(size)
+			{
+				document.cookie = "size=" + size;
+			}
+
+			var mywidth = "100%";
+
+			function setmywidth(width)
+			{
+				document.cookie = "mywidth=" + width;
+			}
+
+             /*------------------------------------------------------------
+	Document Text Sizer- Copyright 2003 - Taewook Kang.  All rights reserved.
+	Coded by: Taewook Kang (txkang.REMOVETHIS@hotmail.com)
+	Web Site: http://txkang.com
+	Script featured on Dynamic Drive (http://www.dynamicdrive.com)
+
+	Please retain this copyright notice in the script.
+	License is granted to user to reuse this code on
+	their own website if, and only if,
+	this entire copyright notice is included.
+--------------------------------------------------------------*/
+
+//Specify affected tags. Add or remove from list:
+var tgs = new Array( 'div','td','tr');
+
+//Specify spectrum of different font sizes:
+var szs = new Array( 'xx-small','x-small','small','medium','large','x-large' );
+
+var startSz = 2;
+
+function ts( trgt,inc ) {
+	if (!document.getElementById) return
+	var d = document,cEl = null,sz = startSz,i,j,cTags;
+
+	sz += inc;
+	if ( sz < 0 ) sz = 0;
+	if ( sz > 5 ) sz = 5;
+	startSz = sz;
+
+
+	if ( !( cEl = d.getElementById( trgt ) ) ) cEl = d.getElementsByTagName( trgt )[ 0 ];
+
+	cEl.style.fontSize = szs[ sz ];
+
+	for ( i = 0 ; i < tgs.length ; i++ ) {
+		cTags = cEl.getElementsByTagName( tgs[ i ] );
+		for ( j = 0 ; j < cTags.length ; j++ ) cTags[ j ].style.fontSize = szs[ sz ];
+	}
+    setmysize(szs[ sz ]);
+ }
+
+ function tsreset( trgt ) {
+	if (!document.getElementById) return
+	var d = document,cEl = null,sz = startSz,i,j,cTags;
+
+	sz = 2;
+	startSz = sz;
+
+
+	if ( !( cEl = d.getElementById( trgt ) ) ) cEl = d.getElementsByTagName( trgt )[ 0 ];
+
+	cEl.style.fontSize = szs[ sz ];
+
+	for ( i = 0 ; i < tgs.length ; i++ ) {
+		cTags = cEl.getElementsByTagName( tgs[ i ] );
+		for ( j = 0 ; j < cTags.length ; j++ ) cTags[ j ].style.fontSize = szs[ sz ];
+	}
+    setmysize(szs[ sz ]);
+ }
+
+	function ws(wid) {
+		document.getElementById("maintable").style.width = wid;
+			setmywidth(wid);
+	}
+		// ]]></script>
+</head>
+<body>
+<div id="maintable">
+	<table id="uppersection" cellspacing="0" cellpadding="0" width="100%">
+		<tr>
+			<td id="timesection2">
+	 October 19, 2026, 05:50
+			</td>
+			<td align="right" id="timesection">
+<form action="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;" style="text-align: right; margin: 0; padding: 0;" method="post" class="smalltext">
+		<a href="javascript:ts('body',1)"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/bigger.gif" alt="bigger" style="vertical-align: middle;"/></a>
+		<a href="javascript:ts('body',-1)"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/smaller.gif" alt="smaller" style="vertical-align: middle;"/></a>
+		<a href="javascript:tsreset('body')"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/reset2.gif" alt="reset" style="vertical-align: middle;"/></a>
+		&nbsp;
+         <input style="vertical-align: middle; padding: 0; margin: 0; width: 9px; height: 10px; border: 0; background-color: #674146; color: #674146; font-size: 4px;" type="submit" value="red" name="options[theme_color]" />
+         <input style="vertical-align: middle; padding: 0; margin: 0; width: 9px; height: 10px; border: 0; background-color: #515552; color: #515552; font-size: 4px;" type="submit" value="green" name="options[theme_color]" />
+         <input style="vertical-align: middle; padding: 0; margin: 0; width: 9px; height: 10px; border: 0; background-color: #3E4D65; color: #3E4D65; font-size: 4px;" type="submit" value="blue" name="options[theme_color]" />
+         <input style="vertical-align: middle; padding: 0; margin: 0; width: 9px; height: 10px; border: 0; background-color: #404040; color: #404040; font-size: 4px;" type="submit" value="grey" name="options[theme_color]" />
+		&nbsp;
+		<a href="javascript:ws('1020px')"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/fixed.gif" alt="1020px" style="vertical-align: middle;"/></a>
+		<a href="javascript:ws('1280px')"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/wide.gif" alt="Wide width" style="vertical-align: middle;"/></a>
+		<a href="javascript:ws('100%')"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/full.gif" alt="Full width" style="vertical-align: middle;"/></a>
+		<a href="javascript:ws('1280px')"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/reset2.gif" alt="Reset" style="vertical-align: middle;"/></a>
+		&nbsp;
+		<a href="#" onclick="shrinkHeader(!current_header); return false;"><img id="upshrink" src="https://www.gildor.org/smf/Themes/leviathan_11final/images/upshrink.gif" alt="*" title="Shrink or expand the header." align="top" style="margin: 0 0px 0 3px; vertical-align: middle;"  /></a>
+		<a href="#" onclick="shrinkHeader2(!current_header2); return false;"><img id="upshrink2" src="https://www.gildor.org/smf/Themes/leviathan_11final/images/upshrink.gif" alt="*" title="Shrink or expand the header."  align="top" style="margin: 0 0px 0 1px; vertical-align: middle;"   /></a>
+</form>
+       
+			</td>
+		</tr>
+		<tr id="topsection" >
+			<td class="ltop"><h1>Gildor's Forums</h1></td>
+			<td class="rtop">
+			      <table style="float: right;"><tr>
+			          <td class="show_pc">&nbsp;</td>
+			          <td>
+			              <a href="/">
+			                  <img width="32px" src="/files/images/homepage.png" alt="Homepage" title="Visit homepage"/>
+			              </a>
+			          </td>
+			          <td>
+			              <a href="http://www.facebook.com/ue.viewer">
+			                  <img src="/files/images/icons/facebook.png" alt="Facebook" title="Follow us on Facebook"/>
+			              </a>
+			          </td>
+			          <td>
+			              <a href="https://twitter.com/UGildor">
+			                  <img src="/files/images/icons/twitter.png" alt="Read news on Twitter" title="Read news on Twitter">
+			              </a>
+			          </td>
+			          <td>
+					      <a href="https://www.youtube.com/c/KonstantinNosov">
+					          <img src="/files/images/icons/youtube.png" alt="Youtube channel" title="Youtube channel">
+					      </a>
+			          </td>
+			          <td>
+					      <a href="https://github.com/gildor2">
+					          <img src="/files/images/icons/github.png" alt="Github page" title="Github page">
+					      </a>
+			          </td>
+			          <!--td width="94">
+                          <a href="/en/donate">
+                              <img src="/files/images/donate/cards.gif" alt="Donate" title="Donate" width="90" height="35"/>
+                          </a>
+                      </td-->
+                      <td width="100" id="theme_logo">&nbsp;</td>
+                  </tr></table>
+			</td>
+		</tr><tr>
+			<td colspan="2">
+<div id="menubox">
+	<ul><li id="chosen"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;">Home</a></li><li ><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=help">Help</a></li><li ><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=search">Search</a></li><li ><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=login">Login</a></li><li ><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=reg637">Register</a></li>
+			<form action="" method="post" class="smalltext" style="float: right;">
+				<select id="language_select" name="language" onchange="this.form.submit()" class="smalltext">
+					<option value="russian-utf8">Russian</option>
+					<option value="english" selected="selected">English</option>
+				</select><input type="hidden" name="changelang" value="1" />&nbsp;<noscript><input type="submit" value="Go!" /></noscript></form>
+	</ul>
+</div>
+			</td>
+		</tr>
+	</table>
+	<div id="lowersection" width="100%" >
+		<div id="usersection">
+			<div class="ltop">
+					<div>
+							<b>Welcome, <b>Guest</b>. Please login or register.<br />Did you miss your <a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=activate">activation email?</a></b><br />
+
+
+								<script language="JavaScript" type="text/javascript" src="https://www.gildor.org/smf/Themes/default/sha1.js"></script>
+
+								<form action="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=login2" method="post" accept-charset="UTF-8" class="middletext" style="margin: 3px 1ex 1px 0;" onsubmit="hashLoginPassword(this, '8fefdbfdcd67233c015c00eed92147c3');">
+								<div class="middletext">
+									<input type="text" name="user" size="10" /> <input type="password" name="passwrd" size="10" />
+									<select name="cookielength">
+										<option value="60">1 Hour</option>
+										<option value="1440">1 Day</option>
+										<option value="10080">1 Week</option>
+										<option value="43200">1 Month</option>
+										<option value="-1" selected="selected">Forever</option>
+									</select>
+									<input class="smalltext" type="submit" value="Login" />
+									<input type="hidden" name="hash_passwrd" value="" />
+								</div>
+							</form>
+					</div>
+			</div>
+			<div class="rtop" align="center">
+					<form action="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=search2" method="post" accept-charset="UTF-8" style="margin: 0;">
+						<div>
+							<div style="display: inline-block;">
+								<input id="searchbox" type="text" name="search" value="" />&nbsp;
+								<input class="smalltext" type="submit" name="submit" value="Search"  />&nbsp;
+							</div>
+							<div style="display: inline-block;"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=search;advanced">Advanced search</a></div>
+							<input type="hidden" name="advanced" value="0" />
+							<input type="hidden" name="topic" value="8304" />
+                       </div>
+					</form>
+			</div>
+		</div>
+	</div>
+	<table id="bodysection" cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+			<td width="100%"><!--Headers--><!--End Headers-->
+<a name="top"></a>
+<a name="msg40562"></a>
+<table width="100%" cellpadding="3" cellspacing="0">
+	<tr>
+		<td valign="bottom"><div class="nav" style="font-size: 90%; margin-bottom: 2ex; margin-top: 2ex;"><b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;" class="nav">Gildor's Forums</a></b>&nbsp;>&nbsp;<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;#3" class="nav">English Forum</a></b>&nbsp;>&nbsp;<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;board=3.0" class="nav">UE Viewer (English)</a></b>&nbsp;>&nbsp;<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;board=38.0" class="nav">Unreal engine 4</a></b> (Moderator: <a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=3608" title="Board Moderator">Juso3D</a>)&nbsp;>&nbsp;<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.0" class="nav">Animation Compression Library (ACL) support</a></b></div></td>
+		<td valign="bottom" align="right" class="smalltext">
+			<span class="nav"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.0;prev_next=prev#new">&laquo; previous</a> <a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.0;prev_next=next#new">next &raquo;</a></span>
+		</td>
+	</tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0" class="tborder">
+	<tr>
+		<td class="catbg" width="100%">
+			<table cellpadding="3" cellspacing="0" width="100%">
+				<tr class="whitetext">
+					<td class="smalltext navPages">
+						<b>Pages:</b> [<b>1</b>] <a class="navPages" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.15">2</a> <a class="navPages" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.30">3</a> <a class="navPages" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.45">4</a> 
+					</td>
+					<td align="right" style="font-size: smaller;"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=printpage;topic=8304.0" target="_blank"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/english/print.gif" alt="Print" border="0" /></a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0" class="tborder" style="border-bottom: 0;">
+	<tr class="titlebg">
+		<td valign="middle" width="15%" style="padding-left: 6px;">
+			<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/topic/hot_post_sticky.gif" alt="" align="middle" /> Author
+		</td>
+		<td valign="middle" width="85%" style="padding-left: 6px;" id="top_subject">
+			Topic: Animation Compression Library (ACL) support &nbsp;(Read 142854 times)
+		</td>
+	</tr>
+</table>
+<form action="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=quickmod2;topic=8304.0" method="post" name="quickModForm" id="quickModForm" style="margin: 0;" onsubmit="return in_edit_mode == 1 ? modify_save('8fefdbfdcd67233c015c00eed92147c3') : confirm('Are you sure you want to do this?');">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="bordercolor">
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg4">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5330" title="View the profile of spiritovod">spiritovod</a></b>
+								<div class="smalltext">Global Moderator<br />Hero Member<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><br />
+								Posts: 3006<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5330"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg40562#msg40562"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_40562">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg40562#msg40562">Animation Compression Library (ACL) support</a>
+									</div>
+									<div class="smalltext">&#171; <b> on:</b> June 27, 2021, 16:02 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">I was planning to create an updated list with games, which are using <a href="https://github.com/nfrechette/acl" target="_blank"><span style="text-decoration: underline;">ACL compression</span></a>, for statistics and fast lookup in the future, to simplify possible tests and such.<br /><br />Most games from the list are now supported with different ACL umodel builds, posted in this topic or respective game topics. The following list is outdated, see posts with respective builds for actual info.<br /><br /><b>Desktop games:</b> <br />All latest Dontnod&#39;s games: two last episodes of <a href="/smf/index.php/topic,6628.0.html" target="_blank">Life is Strange 2</a>, <a href="/smf/index.php/topic,7510.0.html" target="_blank">Twin Mirror</a>, <a href="/smf/index.php/topic,7321.0.html" target="_blank">Tell Me Why</a>, most likely all their future releases as well. <br /><a href="/smf/index.php/topic,7219.0.html" target="_blank">Beyond a Steel Sky</a>, Chivalry 2, Fortnite (current version), <a href="/smf/index.php/topic,7922.0.html" target="_blank">Kena: Bridge of Spirits</a>, <a href="/smf/index.php/topic,6769.0.html" target="_blank">Remnant: From the Ashes</a> (current version), <a href="/smf/index.php/topic,7202.0.html" target="_blank">Rogue Company</a> (current version), <a href="/smf/index.php/topic,7688.0.html" target="_blank">Star Wars: Tales From The Galaxy&#39;s Edge</a>, <a href="/smf/index.php/topic,6925.0.html" target="_blank">Final Fantasy VII Remake</a> (including Intergrade), <a href="/smf/index.php/topic,7850.0.html" target="_blank">The Ascent</a>, The Dark Pictures Anthology (Man of Medan / Little Hope / House of Ashes / Devil in Me) (current version), <a href="/smf/index.php/topic,7040.0.html" target="_blank">Valorant</a>, <a href="/smf/index.php/topic,8193.0.html" target="_blank">Evil Dead: The Game</a>, <a href="/smf/index.php/topic,8230.0.html" target="_blank">The Quarry</a>, <a href="/smf/index.php/topic,8297.0.html" target="_blank">The DioField Chronicle</a>, <a href="/smf/index.php/topic,6797.0.html" target="_blank">Borderlands 3</a>, <a href="/smf/index.php/topic,8147.0.html" target="_blank">Tiny Tina&#39;s Wonderlands</a>, <a href="/smf/index.php/topic,7387.0.html" target="_blank">Medieval Dynasty</a> (current version), <a href="/smf/index.php/topic,8307.0.html" target="_blank">Divine Knockout</a>, <a href="/smf/index.php/topic,3055.0.html" target="_blank">Lost Ark</a>, <a href="/smf/index.php/topic,8312.0.html" target="_blank">SD Gundam Battle Alliance</a>, <a href="/smf/index.php/topic,7535.0.html" target="_blank">Back 4 Blood</a>, <a href="/smf/index.php/topic,8183.0.html" target="_blank">KartRider: Drift</a> (current version), <a href="/smf/index.php/topic,8337.0.html" target="_blank">Dragon Quest X Offline</a>, <a href="/smf/index.php/topic,7591.0.html" target="_blank">Gran Saga</a> (current version), <a href="/smf/index.php/topic,8157.0.html" target="_blank">Gundam Evolution</a> (current version), <a href="/smf/index.php/topic,8384.0.html" target="_blank">The Outlast Trials</a>, <a href="/smf/index.php/topic,8393.0.html" target="_blank">Harvestella</a>, <a href="/smf/index.php/topic,8404.0.html" target="_blank">Valkyrie Elysium</a>, <a href="/smf/index.php/topic,8410.0.html" target="_blank">The Dark Pictures Anthology: The Devil In Me</a>, <a href="/smf/index.php/topic,8427.0.html" target="_blank">The Callisto Protocol</a>, <a href="/smf/index.php/topic,8182.0.html" target="_blank">Synced</a> (current version), <a href="/smf/index.php/topic,8438.0.html" target="_blank">High On Life</a>, <a href="/smf/index.php/topic,3229.0.html" target="_blank">PlayerUnknown&#39;s Battlegrounds</a> (current version), <a href="/smf/index.php/topic,8493.0.html" target="_blank">Deliver Us Mars</a>, <a href="/smf/index.php/topic,8494.0.html" target="_blank">Sherlock Holmes The Awakened</a>, <a href="/smf/index.php/topic,8496.0.html" target="_blank">Hogwarts Legacy</a>, <a href="/smf/index.php/topic,8507.0.html" target="_blank">Wanted: Dead</a>, <a href="/smf/index.php/topic,8508.0.html" target="_blank">Like a Dragon: Ishin</a>, <a href="/smf/index.php/topic,8509.0.html" target="_blank">Atomic Heart</a>, <a href="/smf/index.php/topic,8542.0.html" target="_blank">Crime Boss: Rockay City</a>, <a href="/smf/index.php/topic,8562.0.html" target="_blank">Dead Island 2</a>, <a href="/smf/index.php/topic,8564.0.html" target="_blank">Star Wars Jedi: Survivor</a>, <a href="/smf/index.php/topic,8573.0.html" target="_blank">Redfall</a>, Park Beyond, The Lord of the Rings: Gollum, Gangstar NY, Lies of P, Warhaven (current version), AEW: Fight Forever, Legend of the Condor, Crossfire: Sierra Squad, Mortal Kombat 1, My Hero Ultra Rumble, Battle Crush, Overkill&#39;s The Walking Dead, Payday 3, Outcast - A New Beginning, South Park: Snow Day, Godfall (current version), Raven 2, Shin Megami Tensei V: Vengeance, FragPunk, Visions of Mana, Zhu Xian 2, Delta Force: Hawk Ops, Black Myth: Wukong, Spectre Divide, Harry Potter: Quidditch Champions, The First Berserker: Khazan, Final Fantasy VII Rebirth, Calabiyau / Strinova, La Quimera, Light of Motiram, Wuthering Waves (current version), Edens Zero<br /><br /><b>Mobile games:</b><br /><a href="/smf/index.php/topic,7731.0.html" target="_blank">Apex Legends Mobile</a> (current version), Dislyte, Marvel Future Revolution, Mir4, Ni no Kuni: Cross Worlds, PUBG Mobile (current version), Undecember, Blade &amp; Soul Revolution (current version), Crystal of Atlan, Mortal Kombat: Onslaught (old versions), Farlight 84, ArcheAge War, Assassin&#39;s Creed: Codename Jade, Undawn, Arena Breakout, High Energy Heroes, Dream Star, Tarisland (current version), Fading City, Need for Speed Mobile (current version), Star Wars: Hunters (current version), Etheria: Restart (current version)<br /><br /><b>Console games:</b><br /><a href="/smf/index.php/topic,7885.0.html" target="_blank">No More Heroes 3</a></div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_40562">
+									&#171; <i>Last Edit: March 14, 2026, 01:16 by spiritovod</i> &#187;
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg40895"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg2">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5857" title="View the profile of babymammoth">babymammoth</a></b>
+								<div class="smalltext">Newbie<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/star.gif" alt="*" border="0" /><br />
+								Posts: 7<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5857"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg40895#msg40895"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_40895">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg40895#msg40895">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #1 on:</b> July 30, 2021, 22:51 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">looks like we&#39;ve met the 10-15 games threshold for the support to be added&nbsp; <img src="https://www.gildor.org/smf/Smileys/alienine/cool.png" alt="cool" border="0" /></div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_40895">
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg41237"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg4">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=6507" title="View the profile of BetaX">BetaX</a></b>
+								<div class="smalltext">Newbie<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/star.gif" alt="*" border="0" /><br />
+								Posts: 4<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=6507"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg41237#msg41237"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_41237">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg41237#msg41237">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #2 on:</b> September 13, 2021, 17:19 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">Also Lost ark and Apex Legends Mobile <img src="https://www.gildor.org/smf/Smileys/alienine/smiley.png" alt="Smiley" border="0" /></div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_41237">
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg41239"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg2">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=3608" title="View the profile of Juso3D">Juso3D</a></b>
+								<div class="smalltext">Moderator<br />Hero Member<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/starmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/starmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/starmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/starmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/starmod.gif" alt="*" border="0" /><br />
+								Posts: 909<br />
+								<br />
+							</div>
+						</div>
+								<div class="msg_author_avatar"><img src="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=dlattach;attach=1564;type=avatar" alt="" class="avatar" border="0" /></div><br />
+						<div class="msg_author_message">
+								Welcome to Gildor Forums<br />
+								<br />
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=3608"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg41239#msg41239"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_41239">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg41239#msg41239">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #3 on:</b> September 13, 2021, 17:59 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post"><div class="quoteheader"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=7805.msg40895#msg40895">Quote from: babymammoth on July 30, 2021, 22:51</a></div><div class="quote">looks like we&#39;ve met the 10-15 games threshold for the support to be added&nbsp; <img src="https://www.gildor.org/smf/Smileys/alienine/cool.png" alt="cool" border="0" /><br /></div><br />Remember also though: <br /><br /><div class="quoteheader"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=7805.msg40436#msg40436">Quote from: Gildor on June 21, 2021, 00:24</a></div><div class="quote">I&#39;ll consider integration (<b><span style="color: red;">if it will not break anything in UModel</span></b>)<br /></div></div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_41239">
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="signature">Blender + Linux User Here.</div>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg42436"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg4">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=6907" title="View the profile of MountainFlash">MountainFlash</a></b>
+								<div class="smalltext">Newbie<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/star.gif" alt="*" border="0" /><br />
+								Posts: 4<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=6907"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42436#msg42436"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_42436">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42436#msg42436">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #4 on:</b> February 07, 2022, 08:42 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">Umodel build with ACL support.<br />tested it with Valorant(release-04.02)<br /><br /><a href="https://cdn.discordapp.com/attachments/719155652286742578/940104173423321148/umodel_win32.zip" target="_blank">https://cdn.discordapp.com/attachments/719155652286742578/940104173423321148/umodel_win32.zip</a></div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_42436">
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg42441"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg2">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=4340" title="View the profile of FDArtZz">FDArtZz</a></b>
+								<div class="smalltext">Newbie<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/star.gif" alt="*" border="0" /><br />
+								Posts: 20<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=4340"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42441#msg42441"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_42441">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42441#msg42441">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #5 on:</b> February 08, 2022, 00:34 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post"><div class="quoteheader"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=7805.msg42436#msg42436">Quote from: MountainFlash on February 07, 2022, 08:42</a></div><div class="quote">Umodel build with ACL support.<br /></div><br />Thx for all your work always &lt;3 you help us all alot! I cant test it atm but would this also fix add anims or is this only for ACL support? And if not is this something you are thinking of working on or not?</div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_42441">
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg42452"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg4">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=6254" title="View the profile of Triadasoul">Triadasoul</a></b>
+								<div class="smalltext">Newbie<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/star.gif" alt="*" border="0" /><br />
+								Posts: 31<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=6254"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42452#msg42452"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_42452">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42452#msg42452">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #6 on:</b> February 11, 2022, 01:43 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post"><div class="quoteheader"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=7805.msg42436#msg42436">Quote from: MountainFlash on February 07, 2022, 08:42</a></div><div class="quote">Umodel build with ACL support.<br />tested it with Valorant(release-04.02)<br /><br /><a href="https://cdn.discordapp.com/attachments/719155652286742578/940104173423321148/umodel_win32.zip" target="_blank">https://cdn.discordapp.com/attachments/719155652286742578/940104173423321148/umodel_win32.zip</a><br /></div><br />Tested on Mir4 - it doesn&#39;t work. Reports this after animation search:<br /><br /><div class="codeheader">Code:</div><div class="code">USkeleton::ConvertAnims: Skel=Mon_D_Centipede_Skeleton Anim=Mon_D_Centipede_Btl_Atk01 &lt;- UAnimSequence4::PostLoad &lt;- PostLoad: Mon_D_Centipede_Btl_Atk01 &lt;- UObject::EndLoad &lt;- LoadWholePackage: /Game/Animation/AnimationSequence/Monster/Animal/D_Centipede/Mon_D_Centipede_Btl_Atk01.uasset &lt;- Load: 0/20 &lt;- CSkelMeshViewer::FindUE4Animations &lt;- CSkelMeshViewer::AttachAnimSet &lt;- CSkelMeshViewer::ProcessKey &lt;- CUmodelApp::ProcessKey: key=80000061, down=1 &lt;- VisualizerLoop &lt;- Main: umodel_build=1586</div><br />Appending certain animation also doesn&#39;t work with this code:<br /><br /><div class="codeheader">Code:</div><div class="code">USkeleton::ConvertAnims: Skel=Mon_Bloody01_Skeleton Anim=Mon_Bloody01_Btl_Atk01 &lt;- UAnimSequence4::PostLoad &lt;- PostLoad: Mon_Bloody01_Btl_Atk01 &lt;- UObject::EndLoad &lt;- LoadWholePackage: /Game/Animation/AnimationSequence/Monster/Bloody/Bloody01/Mon_Bloody01_Btl_Atk01.uasset &lt;- CUmodelApp::ShowPackageUI &lt;- CUmodelApp::ProcessKey: key=6F, down=1 &lt;- VisualizerLoop &lt;- Main: umodel_build=1586</div></div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_42452">
+									&#171; <i>Last Edit: February 11, 2022, 01:48 by Triadasoul</i> &#187;
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg42453"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg2">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=6254" title="View the profile of Triadasoul">Triadasoul</a></b>
+								<div class="smalltext">Newbie<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/star.gif" alt="*" border="0" /><br />
+								Posts: 31<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=6254"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42453#msg42453"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_42453">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42453#msg42453">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #7 on:</b> February 11, 2022, 03:20 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">As for Remnants from the Ashes it doesn&#39;t work either:<br /><br /><div class="codeheader">Code:</div><div class="code">appMalloc: size=1408172336 (total=279 Mbytes) &lt;- FArray::Empty: 1408172336 x 1 &lt;- FString&lt;&lt; &lt;- UAnimSequence4::SerializeCompressedData &lt;- UAnimSequence4::Serialize &lt;- LoadObject: AnimSequence4&#39;Slime_Hulk_Atk_WaterWave.Slime_Hulk_Atk_WaterWave&#39;, pos=970F, ver=517/0 (unversioned), game=ue4.22 &lt;- UObject::EndLoad &lt;- LoadWholePackage: /Game/World_Swamp/Characters/Swamp_FatCreature/Animations/Slime_Hulk_Atk_WaterWave.uasset &lt;- Load: 0/72 &lt;- CSkelMeshViewer::FindUE4Animations &lt;- CSkelMeshViewer::AttachAnimSet &lt;- CSkelMeshViewer::ProcessKey &lt;- CUmodelApp::ProcessKey: key=80000061, down=1 &lt;- VisualizerLoop &lt;- Main: umodel_build=1586</div></div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_42453">
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg42751"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg4">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=6907" title="View the profile of MountainFlash">MountainFlash</a></b>
+								<div class="smalltext">Newbie<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/star.gif" alt="*" border="0" /><br />
+								Posts: 4<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=6907"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42751#msg42751"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_42751">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42751#msg42751">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #8 on:</b> April 06, 2022, 13:58 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">Mir4 uses a custom engine version so I can&#39;t fix it. and I don&#39;t know about Remnants from the Ashes.<br /><br />Source code with ACL support: <a href="https://github.com/MinshuG/UEViewer.git" target="_blank">https://github.com/MinshuG/UEViewer.git</a></div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_42751">
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg42970"></a><a name="new"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg2">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5330" title="View the profile of spiritovod">spiritovod</a></b>
+								<div class="smalltext">Global Moderator<br />Hero Member<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><br />
+								Posts: 3006<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5330"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42970#msg42970"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_42970">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42970#msg42970">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #9 on:</b> May 13, 2022, 22:24 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post"><span style="color: green;"><b><span style="font-size: 11pt; line-height: 1.3em;">Experimental builds for games using newer ACL format:</span></b></span> <a href="https://drive.google.com/file/d/167nyU8X7PD0U5VsU5NhU3sFXbNLSGEa_/view?usp=sharing" target="_blank"><span style="text-decoration: underline;"><span style="font-size: 11pt; line-height: 1.3em;">link</span></span></a><br />If you&#39;re a newcomer, check <a href="/smf/index.php/topic,8304.msg43662.html#msg43662" target="_blank"><span style="text-decoration: underline;">this post</span></a> before launching the build. For ACL 2.1 build you need to use updated ActorX importer (in case of psk/psa export), included with specific build from <a href="/smf/index.php/topic,7906.0.html" target="_blank"><span style="text-decoration: underline;">this topic</span></a>.<br /><br />Only tracks are supported (though it should be fine for most games). Tested with:<br />2.1: Marvel Future Revolution, The Quarry, Valorant, Medieval Dynasty, The DioField Chronicle, Evil Dead: The Game, No More Heroes 3 (a few anims may require 1.3 build), Kena: Bridge of Spirits, Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles (switch version), The Dark Pictures Anthology (Man of Medan / Little Hope / House of Ashes / Devil in Me), Undecember, SD Gundam Battle Alliance, KartRider: Drift, Crystal of Atlan, Dragon Quest X Offline, Gundam Evolution, The Outlast Trials, Mortal Kombat: Onslaught, Harvestella, Valkyrie Elysium, The Callisto Protocol, Synced, High On Life, Deliver Us Mars, Sherlock Holmes The Awakened, Hogwarts Legacy, Wanted Dead, Like a Dragon: Ishin, Atomic Heart, Crime Boss: Rockay City, Farlight 84, ArcheAge War, Park Beyond, The Lord of the Rings: Gollum, Warhaven, AEW: Fight Forever, Assassin&#39;s Creed: Codename Jade, Arena Breakout, High Energy Heroes, Legend of the Condor, Crossfire: Sierra Squad, Mortal Kombat 1, Dream Star, Battle Crush, Payday 3, Wonderers: Eternal World, Outcast - A New Beginning, South Park: Snow Day, Godfall, Operation Apocalypse, Raven 2, Shin Megami Tensei V: Vengeance, Tarisland, FragPunk, Fading City, Need for Speed Mobile, Visions of Mana, Zhu Xian 2, Delta Force: Hawk Ops, Spectre Divide, Harry Potter: Quidditch Champions, Star Wars: Hunters, Etheria: Restart, The First Berserker: Khazan, Roco Kingdom: World, Calabiyau / Strinova, La Quimera, Light of Motiram, Wuthering Waves, Edens Zero, One Piece Ambition, Final Fantasy XIV Mobile, Cabal RED, Assault Fire Future (latest versions), Dragon Quest VII Reimagined, Silent Hill: The Short Message, Romancing SaGa 2: Revenge of the Seven, Dark December, Mobile Suit Gundam Seed Battle Destiny Remastered, Honor of Kings World, The Division Resurgence, Astro Arena: 3vs3 Battle PvP, Aliens: Fireteam Elite 2, Mandragora: Whispers of the Witch Tree, Duet Night Abyss (current version)<br />2.0a: Chivalry 2, Rogue Company, Divine Knockout<br />2.0b: Back 4 Blood<br /><br /><i>Update:</i> Build is updated with support for The Quarry and The Dark Pictures Anthology: The Devil In Me, you need to use game specific override option (it&#39;s the same for both games).<br /><i>Update 2:</i> Build is updated with support for Valorant, you need to use game specific override option. It can now also export vertex normals to psk thanks to floxay (more info <a href="/smf/index.php/topic,7927.0.html" target="_blank"><span style="text-decoration: underline;">here</span></a>).<br /><i>Update 3:</i> Build is replaced with the one with different ACL implementation (like in 1.x builds). Also, support for Kena: Bridge of Spirits is added, you need to use game specific override option (for anniversary update simply choose proper engine version).<br /><i>Update 4:</i> There are more builds now, 2.0 are based on old dev versions and 2.1 would be based on latest ACL version. For Rogue Company &amp; Divine Knockout you need to use game specific override options, for Chivalry 2 use 4.25 Plus override.<br /><i>Update 5:</i> Separate build for Back 4 Blood is added to the archive, you need to use 4.25 Plus override option.<br /><i>Update 6:</i> Updated for The Outlast Trials, you need to use game specific override option.<br /><i>Update 7:</i> Updated for Hogwarts Legacy, you need to use game specific override option for static meshes to work.<br /><i>Update 8:</i> Updated for Farlight 84, you need to use game specific override option for static meshes to work.<br /><i>Update 9:</i> Updated for The Lord of the Rings: Gollum, you need to use game specific override.<br /><i>Update 10:</i> Updated for Assassin&#39;s Creed: Codename Jade, you need to use game specific override.<br /><i>Update 11:</i> Updated for for High Energy Heroes, you need to use game specific override.<br /><i>Update 12:</i> Separate override is added for Synced, previously it could be auto-detected, now you need to use game specific override.<br /><i>Update 13:</i> Mortal Kombat 1 support added.<br /><i>Update 14:</i> Raven 2 support added.<br /><i>Update 15:</i> FragPunk support added.<br /><i>Update 16:</i> Fading City support added.<br /><i>Update 17:</i> Added support for latest versions of Need for Speed Mobile.<br /><i>Update 18:</i> Visions of Mana support added.<br /><i>Update 19:</i> Delta Force: Hawk Ops support added.<br /><i>Update 20:</i> Spectre Divide support added.<br /><i>Update 21:</i> Star Wars: Hunters support added.<br /><i>Update 22:</i> Etheria: Restart support added.<br /><i>Update 23:</i> Dream Star support added.<br /><i>Update 24:</i> Roco Kingdom: World support added.<br /><i>Update 25:</i> Calabiyau / Strinova support added.<br /><i>Update 26:</i> Light of Motiram support added.<br /><i>Update 27:</i> Wuthering Waves support added.<br /><i>Update 28:</i> ArcheAge War support added.<br /><i>Update 29:</i> Final Fantasy XIV Mobile support added.<br /><i>Update 30:</i> Added support for latest version of Assault Fire Future.<br /><i>Update 31:</i> Dragon Quest VII Reimagined support added.<br /><i>Update 32:</i> Honor of Kings World support added.<br /><i>Update 33:</i> The Division Resurgence support added.<br /><br />P.S. Game specific override option is when you enable override detection and choose Unreal 4 -&gt; Game Name in drop-down list.</div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_42970">
+									&#171; <i>Last Edit: October 09, 2026, 02:23 by spiritovod</i> &#187;
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg42985"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg4">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=4072" title="View the profile of Krazze">Krazze</a></b>
+								<div class="smalltext">Jr. Member<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/star.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/star.gif" alt="*" border="0" /><br />
+								Posts: 43<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=4072"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42985#msg42985"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_42985">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42985#msg42985">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #10 on:</b> May 15, 2022, 12:36 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">So which are the supported games using this special build? Valorant/EvilDead and nothing else? I&#39;ve tried chivalry 2 and it doesn&#39;t work.</div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_42985">
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg42988"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg2">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5330" title="View the profile of spiritovod">spiritovod</a></b>
+								<div class="smalltext">Global Moderator<br />Hero Member<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><br />
+								Posts: 3006<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5330"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42988#msg42988"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_42988">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg42988#msg42988">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #11 on:</b> May 15, 2022, 18:42 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">@Krazze: It should support default ACL implementation in default UE4 games. But there can be other changes, which is the case for most games with ACL animations. For instance, it seems that Chivalry 2 has additional values affecting bone mapping, so even if animation tracks can be decompressed properly, result can&#39;t be processed without additional adjustments. <br />Probably House of Ashes and Beyond the Steel Sky are supported by this build as well, not sure about others.</div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_42988">
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg43043"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg4">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=4320" title="View the profile of Richtoveen">Richtoveen</a></b>
+								<div class="smalltext">Newbie<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/star.gif" alt="*" border="0" /><br />
+								Posts: 14<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=4320"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg43043#msg43043"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_43043">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg43043#msg43043">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #12 on:</b> May 20, 2022, 18:20 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">on apex the ACL build is giving me this:<br /><sup>assertion failed: Seq-&gt;RawAnimationData.Num() == NumTracks</sup><br />whole call stack:<br /><sub>USkeleton::ConvertAnims: Skel=SK_Hero_Base_Skeleton Anim=A_Wattson_Revive_TPP &lt;- UAnimSequence4::PostLoad &lt;- PostLoad: A_Wattson_Revive_TPP &lt;- UObject::EndLoad &lt;- LoadWholePackage: /Game/Art/Animation/Revive/Light/Wattson/A_Wattson_Revive_TPP.uasset &lt;- CUmodelApp::ShowPackageUI &lt;- Main: umodel_build=ACL based</sub>[/sub]</div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_43043">
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg43044"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg2">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5330" title="View the profile of spiritovod">spiritovod</a></b>
+								<div class="smalltext">Global Moderator<br />Hero Member<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><br />
+								Posts: 3006<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5330"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg43044#msg43044"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_43044">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg43044#msg43044">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #13 on:</b> May 20, 2022, 19:15 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">@Richtoveen: This build doesn&#39;t support Apex mobile, but akderebur&#39;s tool, mentioned on previous page, should work with animations. For more info about the game specifics read <a href="/smf/index.php/topic,7731.0.html" target="_blank"><span style="text-decoration: underline;">its topic</span></a>.</div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_43044">
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg43604"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg4">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5330" title="View the profile of spiritovod">spiritovod</a></b>
+								<div class="smalltext">Global Moderator<br />Hero Member<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><br />
+								Posts: 3006<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=profile;u=5330"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg43604#msg43604"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_43604">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg43604#msg43604">Animation Compression Library support</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #14 on:</b> August 14, 2022, 05:00 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post"><span style="color: green;"><b><span style="font-size: 11pt; line-height: 1.3em;">Experimental builds for games using older ACL format:</span></b></span> <a href="https://drive.google.com/file/d/1XFT6ipV_iHXkd7P5DQ_yeuT5ZOG6oidA/view?usp=sharing" target="_blank"><span style="text-decoration: underline;"><span style="font-size: 11pt; line-height: 1.3em;">link</span></span></a><br />If you&#39;re a newcomer, check <a href="/smf/index.php/topic,8304.msg43662.html#msg43662" target="_blank"><span style="text-decoration: underline;">this post</span></a> before launching the build. For ACL 1.3 build you need to use updated ActorX importer (in case of psk/psa export), included with specific build from <a href="/smf/index.php/topic,7906.0.html" target="_blank"><span style="text-decoration: underline;">this topic</span></a>.<br /><br />Only clips are supported (it should be fine though for most games). Tested with: <br />1.3: Ni no Kuni: Cross Worlds, The Ascent, Mir4, Remnant: From the Ashes, Beyond a Steel Sky, Dislyte, Tell Me Why, Life is Strange 2, Star Wars: Tales from the Galaxy&#39;s Edge, Gran Saga, Star Wars Jedi: Survivor, Dead Island 2, Redfall, My Hero Ultra Rumble, Borderlands 3 (switch version), Assault Fire Future (old versions)<br />1.2: Blade &amp; Soul: Revolution, Twin Mirror, PlayerUnknown&#39;s Battlegrounds (PC version)<br />1.1: Borderlands 3 (PC version), Tiny Tina’s Wonderlands, Undawn, Overkill&#39;s The Walking Dead<br /><br /><i>Update:</i> Support for Star Wars: Tales from the Galaxy&#39;s Edge is added to 1.3 build, you need to use game specific override option.<br /><i>Update 2:</i> Support for PlayerUnknown&#39;s Battlegrounds (PUBG) is added to to 1.2 build, you need to use game specific override option.<br /><i>Update 3:</i> Support for Star Wars Jedi: Survivor is added to to 1.3 build, you need to use game specific override option.<br /><i>Update 4:</i> Support for Dead Island 2 is added to to 1.3 build, you need to use game specific override option.<br /><i>Update 5:</i> Support for static meshes in Mir4 is added to 1.3 build, you need to use game specific override option.<br /><i>Update 6:</i> Support for Undawn is added to 1.1 build, you need to use game specific override option.<br /><i>Update 7:</i> Support for Assault Fire Future (old versions) is added to 1.3 build, you need to use game specific override option.<br /><br />P.S. Game specific override option is when you enable override detection and choose Unreal 4 -&gt; Game Name in drop-down list.</div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_43604">
+									&#171; <i>Last Edit: March 10, 2026, 04:36 by spiritovod</i> &#187;
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 0 0 1px 0;"></td></tr>
+</table>
+<a name="lastPost"></a>
+
+<table width="100%" cellpadding="3" cellspacing="0" border="0" class="tborder">
+	<tr>
+		<td class="catbg" width="100%">
+			<table cellpadding="3" cellspacing="0" width="100%">
+				<tr class="whitetext">
+					<td class="smalltext navPages">
+						<a name="bot"></a><b>Pages:</b> [<b>1</b>] <a class="navPages" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.15">2</a> <a class="navPages" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.30">3</a> <a class="navPages" href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.45">4</a> 
+					</td>
+					<td align="right" style="font-size: smaller;"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;action=printpage;topic=8304.0" target="_blank"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/english/print.gif" alt="Print" border="0" /></a>&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<script language="JavaScript" type="text/javascript" src="https://www.gildor.org/smf/Themes/default/xml_topic.js"></script>
+<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
+	quickReplyCollapsed = true;
+
+	smf_topic = 8304;
+	smf_start = 0;
+	smf_show_modify = 1;
+
+	// On quick modify, this is what the body will look like.
+	var smf_template_body_edit = '<div id="error_box" style="padding: 4px; color: red;"></div><textarea class="editor" name="message" rows="12" style="width: 94%; margin-bottom: 10px;">%body%</textarea><br /><input type="hidden" name="sc" value="8fefdbfdcd67233c015c00eed92147c3" /><input type="hidden" name="topic" value="8304" /><input type="hidden" name="msg" value="%msg_id%" /><div style="text-align: center;"><input type="submit" name="post" value="Save" onclick="return modify_save(\'8fefdbfdcd67233c015c00eed92147c3\');" accesskey="s" />&nbsp;&nbsp;<input type="submit" name="cancel" value="Cancel" onclick="return modify_cancel();" /></div>';
+
+	// And this is the replacement for the subject.
+	var smf_template_subject_edit = '<input type="text" name="subject" value="%subject%" size="60" style="width: 99%;"  maxlength="80" />';
+
+	// Restore the message to this after editing.
+	var smf_template_body_normal = '%body%';
+	var smf_template_subject_normal = '<a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.msg%msg_id%#msg%msg_id%">%subject%</a>';
+	var smf_template_top_subject = "Topic: %subject% &nbsp;(Read 142854 times)";
+// ]]></script>
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top" align="right" class="smalltext">
+			<span class="nav"> <a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.0;prev_next=prev#new">&laquo; previous</a> <a href="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;topic=8304.0;prev_next=next#new">next &raquo;</a></span>
+		</td>
+	</tr>
+</table>
+<div style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center; flex-wrap: wrap;"></div>
+</form>
+<div class="show_pc" align="right" style="margin-bottom: 1ex;">
+	<form action="https://www.gildor.org/smf/index.php?PHPSESSID=35a1b40657911f56ba4b749d182d4ab5&amp;" method="get" accept-charset="UTF-8" style="padding:0; margin: 0;">
+		<span class="smalltext">Jump to:</span>
+		<select name="jumpto" id="jumpto" onchange="if (this.selectedIndex > 0 &amp;&amp; this.options[this.selectedIndex].value) window.location.href = smf_scripturl + this.options[this.selectedIndex].value.substr(smf_scripturl.indexOf('?') == -1 || this.options[this.selectedIndex].value.substr(0, 1) != '?' ? 0 : 1);">
+			<option value="">Please select a destination:</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="#1">General Category</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="?board=1.0"> => General Discussion</option>
+			<option value="?board=8.0"> ===> Test</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="#2">Русскоязычный Форум</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="?board=2.0"> => UE Viewer (русский форум)</option>
+			<option value="?board=14.0"> ===> Новости</option>
+			<option value="?board=19.0"> ===> Документация</option>
+			<option value="?board=28.0"> ===> ActorX Importer (rus)</option>
+			<option value="?board=26.0"> ===> Unreal-кодинг</option>
+			<option value="?board=25.0"> ===> Проблемы с использованием</option>
+			<option value="?board=42.0"> ===> Unreal engine 4 (rus)</option>
+			<option value="?board=39.0"> ===> Mortal Kombat series (rus)</option>
+			<option value="?board=15.0"> ===> Lineage 2 (rus)</option>
+			<option value="?board=40.0"> ===> Азиатские игры</option>
+			<option value="?board=20.0"> ===> Устаревшие темы</option>
+			<option value="?board=32.0"> => Другие проекты</option>
+			<option value="?board=4.0"> => Разное</option>
+			<option value="?board=34.0"> ===> Локализация и модификация игр</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="#3">English Forum</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="?board=3.0"> => UE Viewer (English)</option>
+			<option value="?board=11.0"> ===> News</option>
+			<option value="?board=9.0"> ===> Documentation</option>
+			<option value="?board=29.0"> ===> ActorX Importer</option>
+			<option value="?board=41.0"> ===> Blender</option>
+			<option value="?board=21.0"> ===> Unreal coding</option>
+			<option value="?board=37.0"> ===> UE Viewer source code</option>
+			<option value="?board=16.0"> ===> Usage problems</option>
+			<option value="?board=12.0"> ===> Epic Games titles</option>
+			<option value="?board=38.0" selected="selected"> ===> Unreal engine 4</option>
+			<option value="?board=44.0"> ===> Unreal engine 5</option>
+			<option value="?board=13.0"> ===> Mass Effect</option>
+			<option value="?board=24.0"> ===> Bioshock</option>
+			<option value="?board=36.0"> ===> iOS and Android games</option>
+			<option value="?board=10.0"> ===> Lineage 2</option>
+			<option value="?board=43.0"> =====> REVERSECODE</option>
+			<option value="?board=33.0"> ===> Asian games</option>
+			<option value="?board=17.0"> ===> Other games</option>
+			<option value="?board=18.0"> ===> Obsolete topics</option>
+			<option value="?board=31.0"> => Other projects</option>
+			<option value="?board=5.0"> => Miscellaneous</option>
+			<option value="?board=22.0"> ===> UE game localization and modding</option>
+			<option value="?board=23.0"> ===> Looking for resources</option>
+		</select>&nbsp;
+		<input type="button" value="go" onclick="if (this.form.jumpto.options[this.form.jumpto.selectedIndex].value) window.location.href = 'https://www.gildor.org/smf/index.php' + this.form.jumpto.options[this.form.jumpto.selectedIndex].value;" />
+	</form>
+</div>
+<br /><!--Footers--><!--End Footers-->
+			</td>
+		</tr>
+	</table>
+	<table id="footersection" cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+				<td class="whitetext" align="center"><span class="smalltext">
+		<span class="smalltext" style="display: inline; visibility: visible; font-family: Verdana, Arial, sans-serif;"><a href="http://www.simplemachines.org/" title="Simple Machines Forum" target="_blank">Powered by SMF</a> |
+<a href="http://www.simplemachines.org/about/copyright.php" title="Free Forum Software" target="_blank">SMF &copy; 2006-2009, Simple Machines LLC</a>
+		</span> <br />
+				<strong>Leviathan</strong> design by <a href="http://www.tinyportal.net">Bloc</a> |
+					<a href="http://validator.w3.org/check/referer" target="_blank">XHTML</a> |
+					<a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">CSS</a>
+				</span>
+			</td>
+		</tr>
+	</table>
+	</div>
+	<div id="ajax_in_progress" style="display: none;">Loading...</div>
+</body></html>

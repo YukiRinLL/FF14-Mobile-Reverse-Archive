@@ -1,0 +1,556 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="[UE4] Final Fantasy XIV Mobile" />
+	<meta name="keywords" content="PHP, MySQL, bulletin, board, free, open, source, smf, simple, machines, forum" />
+	<script language="JavaScript" type="text/javascript" src="https://www.gildor.org/smf/Themes/default/script.js?fin11"></script>
+	<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
+		var smf_theme_url = "https://www.gildor.org/smf/Themes/leviathan_11final";
+		var smf_images_url = "https://www.gildor.org/smf/Themes/leviathan_11final/images";
+		var smf_scripturl = "https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;";
+		var smf_iso_case_folding = false;
+		var smf_charset = "UTF-8";
+	// ]]></script>
+	<title>[UE4] Final Fantasy XIV Mobile</title>
+	<link rel="canonical" href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;topic=9302.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" media="(max-width: 800px)" href="https://www.gildor.org/smf/Themes/leviathan_11final/style_grey_mobile.css?rc7" />
+	<link rel="stylesheet" type="text/css" media="(min-width: 800px)" href="https://www.gildor.org/smf/Themes/leviathan_11final/style_grey.css?rc7" />
+	<link rel="stylesheet" type="text/css" href="https://www.gildor.org/smf/Themes/default/print.css?fin11" media="print" />
+	<link rel="help" href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=help" target="_blank" />
+	<link rel="search" href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=search" />
+	<link rel="contents" href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;" />
+	<link rel="alternate" type="application/rss+xml" title="Gildor's Forums - RSS" href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;type=rss;action=.xml" />
+	<link rel="index" href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;board=36.0" /><style type="text/css"><!--
+	body
+	{
+		font-size: small;
+	}
+	 --></style><style type="text/css"><!--
+		#maintable{
+			padding: 0;
+			margin: auto;
+			width: 1020px;
+		}
+	 --></style><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
+		var current_header = false;
+
+		function shrinkHeader(mode)
+		{
+			document.cookie = "upshrink=" + (mode ? 1 : 0);
+			document.getElementById("upshrink").src = smf_images_url + (mode ? "/upshrink2.gif" : "/upshrink.gif");
+
+			document.getElementById("lowersection").style.display = mode ? "none" : "";
+
+			current_header = mode;
+		}
+	// ]]></script>
+	<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
+		var current_header2 = false;
+
+		function shrinkHeader2(mode)
+		{
+			document.cookie = "upshrink2=" + (mode ? 1 : 0);
+			document.getElementById("upshrink2").src = smf_images_url + (mode ? "/upshrink2.gif" : "/upshrink.gif");
+
+			document.getElementById("topsection").style.display = mode ? "none" : "";
+
+			current_header2 = mode;
+		}
+	// ]]></script>
+		<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
+			var current_header_ic = false;
+
+			function shrinkHeaderIC(mode)
+			{
+				document.cookie = "upshrinkIC=" + (mode ? 1 : 0);
+				document.getElementById("upshrink_ic").src = smf_images_url + (mode ? "/expand.gif" : "/collapse.gif");
+
+				document.getElementById("upshrinkHeaderIC").style.display = mode ? "none" : "";
+
+				current_header_ic = mode;
+			}
+
+			var mysize = "small";
+
+			function setmysize(size)
+			{
+				document.cookie = "size=" + size;
+			}
+
+			var mywidth = "100%";
+
+			function setmywidth(width)
+			{
+				document.cookie = "mywidth=" + width;
+			}
+
+             /*------------------------------------------------------------
+	Document Text Sizer- Copyright 2003 - Taewook Kang.  All rights reserved.
+	Coded by: Taewook Kang (txkang.REMOVETHIS@hotmail.com)
+	Web Site: http://txkang.com
+	Script featured on Dynamic Drive (http://www.dynamicdrive.com)
+
+	Please retain this copyright notice in the script.
+	License is granted to user to reuse this code on
+	their own website if, and only if,
+	this entire copyright notice is included.
+--------------------------------------------------------------*/
+
+//Specify affected tags. Add or remove from list:
+var tgs = new Array( 'div','td','tr');
+
+//Specify spectrum of different font sizes:
+var szs = new Array( 'xx-small','x-small','small','medium','large','x-large' );
+
+var startSz = 2;
+
+function ts( trgt,inc ) {
+	if (!document.getElementById) return
+	var d = document,cEl = null,sz = startSz,i,j,cTags;
+
+	sz += inc;
+	if ( sz < 0 ) sz = 0;
+	if ( sz > 5 ) sz = 5;
+	startSz = sz;
+
+
+	if ( !( cEl = d.getElementById( trgt ) ) ) cEl = d.getElementsByTagName( trgt )[ 0 ];
+
+	cEl.style.fontSize = szs[ sz ];
+
+	for ( i = 0 ; i < tgs.length ; i++ ) {
+		cTags = cEl.getElementsByTagName( tgs[ i ] );
+		for ( j = 0 ; j < cTags.length ; j++ ) cTags[ j ].style.fontSize = szs[ sz ];
+	}
+    setmysize(szs[ sz ]);
+ }
+
+ function tsreset( trgt ) {
+	if (!document.getElementById) return
+	var d = document,cEl = null,sz = startSz,i,j,cTags;
+
+	sz = 2;
+	startSz = sz;
+
+
+	if ( !( cEl = d.getElementById( trgt ) ) ) cEl = d.getElementsByTagName( trgt )[ 0 ];
+
+	cEl.style.fontSize = szs[ sz ];
+
+	for ( i = 0 ; i < tgs.length ; i++ ) {
+		cTags = cEl.getElementsByTagName( tgs[ i ] );
+		for ( j = 0 ; j < cTags.length ; j++ ) cTags[ j ].style.fontSize = szs[ sz ];
+	}
+    setmysize(szs[ sz ]);
+ }
+
+	function ws(wid) {
+		document.getElementById("maintable").style.width = wid;
+			setmywidth(wid);
+	}
+		// ]]></script>
+</head>
+<body>
+<div id="maintable">
+	<table id="uppersection" cellspacing="0" cellpadding="0" width="100%">
+		<tr>
+			<td id="timesection2">
+	 October 19, 2026, 05:50
+			</td>
+			<td align="right" id="timesection">
+<form action="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;" style="text-align: right; margin: 0; padding: 0;" method="post" class="smalltext">
+		<a href="javascript:ts('body',1)"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/bigger.gif" alt="bigger" style="vertical-align: middle;"/></a>
+		<a href="javascript:ts('body',-1)"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/smaller.gif" alt="smaller" style="vertical-align: middle;"/></a>
+		<a href="javascript:tsreset('body')"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/reset2.gif" alt="reset" style="vertical-align: middle;"/></a>
+		&nbsp;
+         <input style="vertical-align: middle; padding: 0; margin: 0; width: 9px; height: 10px; border: 0; background-color: #674146; color: #674146; font-size: 4px;" type="submit" value="red" name="options[theme_color]" />
+         <input style="vertical-align: middle; padding: 0; margin: 0; width: 9px; height: 10px; border: 0; background-color: #515552; color: #515552; font-size: 4px;" type="submit" value="green" name="options[theme_color]" />
+         <input style="vertical-align: middle; padding: 0; margin: 0; width: 9px; height: 10px; border: 0; background-color: #3E4D65; color: #3E4D65; font-size: 4px;" type="submit" value="blue" name="options[theme_color]" />
+         <input style="vertical-align: middle; padding: 0; margin: 0; width: 9px; height: 10px; border: 0; background-color: #404040; color: #404040; font-size: 4px;" type="submit" value="grey" name="options[theme_color]" />
+		&nbsp;
+		<a href="javascript:ws('1020px')"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/fixed.gif" alt="1020px" style="vertical-align: middle;"/></a>
+		<a href="javascript:ws('1280px')"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/wide.gif" alt="Wide width" style="vertical-align: middle;"/></a>
+		<a href="javascript:ws('100%')"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/full.gif" alt="Full width" style="vertical-align: middle;"/></a>
+		<a href="javascript:ws('1280px')"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/img/reset2.gif" alt="Reset" style="vertical-align: middle;"/></a>
+		&nbsp;
+		<a href="#" onclick="shrinkHeader(!current_header); return false;"><img id="upshrink" src="https://www.gildor.org/smf/Themes/leviathan_11final/images/upshrink.gif" alt="*" title="Shrink or expand the header." align="top" style="margin: 0 0px 0 3px; vertical-align: middle;"  /></a>
+		<a href="#" onclick="shrinkHeader2(!current_header2); return false;"><img id="upshrink2" src="https://www.gildor.org/smf/Themes/leviathan_11final/images/upshrink.gif" alt="*" title="Shrink or expand the header."  align="top" style="margin: 0 0px 0 1px; vertical-align: middle;"   /></a>
+</form>
+       
+			</td>
+		</tr>
+		<tr id="topsection" >
+			<td class="ltop"><h1>Gildor's Forums</h1></td>
+			<td class="rtop">
+			      <table style="float: right;"><tr>
+			          <td class="show_pc">&nbsp;</td>
+			          <td>
+			              <a href="/">
+			                  <img width="32px" src="/files/images/homepage.png" alt="Homepage" title="Visit homepage"/>
+			              </a>
+			          </td>
+			          <td>
+			              <a href="http://www.facebook.com/ue.viewer">
+			                  <img src="/files/images/icons/facebook.png" alt="Facebook" title="Follow us on Facebook"/>
+			              </a>
+			          </td>
+			          <td>
+			              <a href="https://twitter.com/UGildor">
+			                  <img src="/files/images/icons/twitter.png" alt="Read news on Twitter" title="Read news on Twitter">
+			              </a>
+			          </td>
+			          <td>
+					      <a href="https://www.youtube.com/c/KonstantinNosov">
+					          <img src="/files/images/icons/youtube.png" alt="Youtube channel" title="Youtube channel">
+					      </a>
+			          </td>
+			          <td>
+					      <a href="https://github.com/gildor2">
+					          <img src="/files/images/icons/github.png" alt="Github page" title="Github page">
+					      </a>
+			          </td>
+			          <!--td width="94">
+                          <a href="/en/donate">
+                              <img src="/files/images/donate/cards.gif" alt="Donate" title="Donate" width="90" height="35"/>
+                          </a>
+                      </td-->
+                      <td width="100" id="theme_logo">&nbsp;</td>
+                  </tr></table>
+			</td>
+		</tr><tr>
+			<td colspan="2">
+<div id="menubox">
+	<ul><li id="chosen"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;">Home</a></li><li ><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=help">Help</a></li><li ><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=search">Search</a></li><li ><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=login">Login</a></li><li ><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=reg637">Register</a></li>
+			<form action="" method="post" class="smalltext" style="float: right;">
+				<select id="language_select" name="language" onchange="this.form.submit()" class="smalltext">
+					<option value="russian-utf8">Russian</option>
+					<option value="english" selected="selected">English</option>
+				</select><input type="hidden" name="changelang" value="1" />&nbsp;<noscript><input type="submit" value="Go!" /></noscript></form>
+	</ul>
+</div>
+			</td>
+		</tr>
+	</table>
+	<div id="lowersection" width="100%" >
+		<div id="usersection">
+			<div class="ltop">
+					<div>
+							<b>Welcome, <b>Guest</b>. Please login or register.<br />Did you miss your <a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=activate">activation email?</a></b><br />
+
+
+								<script language="JavaScript" type="text/javascript" src="https://www.gildor.org/smf/Themes/default/sha1.js"></script>
+
+								<form action="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=login2" method="post" accept-charset="UTF-8" class="middletext" style="margin: 3px 1ex 1px 0;" onsubmit="hashLoginPassword(this, '92b9e6031a247a2041f68a9909e7067e');">
+								<div class="middletext">
+									<input type="text" name="user" size="10" /> <input type="password" name="passwrd" size="10" />
+									<select name="cookielength">
+										<option value="60">1 Hour</option>
+										<option value="1440">1 Day</option>
+										<option value="10080">1 Week</option>
+										<option value="43200">1 Month</option>
+										<option value="-1" selected="selected">Forever</option>
+									</select>
+									<input class="smalltext" type="submit" value="Login" />
+									<input type="hidden" name="hash_passwrd" value="" />
+								</div>
+							</form>
+					</div>
+			</div>
+			<div class="rtop" align="center">
+					<form action="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=search2" method="post" accept-charset="UTF-8" style="margin: 0;">
+						<div>
+							<div style="display: inline-block;">
+								<input id="searchbox" type="text" name="search" value="" />&nbsp;
+								<input class="smalltext" type="submit" name="submit" value="Search"  />&nbsp;
+							</div>
+							<div style="display: inline-block;"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=search;advanced">Advanced search</a></div>
+							<input type="hidden" name="advanced" value="0" />
+							<input type="hidden" name="topic" value="9302" />
+                       </div>
+					</form>
+			</div>
+		</div>
+	</div>
+	<table id="bodysection" cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+			<td width="100%"><!--Headers--><!--End Headers-->
+<a name="top"></a>
+<a name="msg49382"></a>
+<table width="100%" cellpadding="3" cellspacing="0">
+	<tr>
+		<td valign="bottom"><div class="nav" style="font-size: 90%; margin-bottom: 2ex; margin-top: 2ex;"><b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;" class="nav">Gildor's Forums</a></b>&nbsp;>&nbsp;<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;#3" class="nav">English Forum</a></b>&nbsp;>&nbsp;<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;board=3.0" class="nav">UE Viewer (English)</a></b>&nbsp;>&nbsp;<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;board=36.0" class="nav">iOS and Android games</a></b> (Moderator: <a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=profile;u=3608" title="Board Moderator">Juso3D</a>)&nbsp;>&nbsp;<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;topic=9302.0" class="nav">[UE4] Final Fantasy XIV Mobile</a></b></div></td>
+		<td valign="bottom" align="right" class="smalltext">
+			<span class="nav"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;topic=9302.0;prev_next=prev#new">&laquo; previous</a> <a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;topic=9302.0;prev_next=next#new">next &raquo;</a></span>
+		</td>
+	</tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0" class="tborder">
+	<tr>
+		<td class="catbg" width="100%">
+			<table cellpadding="3" cellspacing="0" width="100%">
+				<tr class="whitetext">
+					<td class="smalltext navPages">
+						<b>Pages:</b> [<b>1</b>] 
+					</td>
+					<td align="right" style="font-size: smaller;"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=printpage;topic=9302.0" target="_blank"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/english/print.gif" alt="Print" border="0" /></a></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<table width="100%" cellpadding="3" cellspacing="0" border="0" class="tborder" style="border-bottom: 0;">
+	<tr class="titlebg">
+		<td valign="middle" width="15%" style="padding-left: 6px;">
+			<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/topic/normal_post.gif" alt="" align="middle" /> Author
+		</td>
+		<td valign="middle" width="85%" style="padding-left: 6px;" id="top_subject">
+			Topic: [UE4] Final Fantasy XIV Mobile &nbsp;(Read 3805 times)
+		</td>
+	</tr>
+</table>
+<form action="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=quickmod2;topic=9302.0" method="post" name="quickModForm" id="quickModForm" style="margin: 0;" onsubmit="return in_edit_mode == 1 ? modify_save('92b9e6031a247a2041f68a9909e7067e') : confirm('Are you sure you want to do this?');">
+<table cellpadding="0" cellspacing="0" border="0" width="100%" class="bordercolor">
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg4">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=profile;u=5330" title="View the profile of spiritovod">spiritovod</a></b>
+								<div class="smalltext">Global Moderator<br />Hero Member<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><br />
+								Posts: 3006<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=profile;u=5330"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;topic=9302.msg49382#msg49382"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_49382">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;topic=9302.msg49382#msg49382">[UE4] Final Fantasy XIV Mobile</a>
+									</div>
+									<div class="smalltext">&#171; <b> on:</b> September 12, 2025, 02:13 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">Game: Final Fantasy XIV Mobile (<a href="https://ff14m.qq.com" target="_blank">official site</a>)<br />UE4 version: 4.25<br />AES key: in the same place as usual (<a href="https://cs.rin.ru/forum/viewtopic.php?f=10&amp;t=100672" target="_blank">link</a>)<br /><br />Use specific build from <a href="/smf/index.php/topic,8304.msg42970.html#msg42970" target="_blank"><span style="text-decoration: underline;">this topic</span></a> with game specific override. Most materials for skeletal meshes are not applied properly, because the game is using custom methods for it.<br /><br />With specific build you can open packages directly, but if you want to extract some assets, which are not supported by umodel, you can use respective quickbms script from specific scripts bundle, available in topic with keys. For more info read <a href="/smf/index.php/topic,7304.0.html" target="_blank"><span style="text-decoration: underline;">sticked topic</span></a> and <a href="https://cs.rin.ru/forum/viewtopic.php?p=3355306#p3355306" target="_blank"><span style="text-decoration: underline;">this post</span></a>.<br /><br /><i>Update:</i> For latest game versions you need to extract packages with the script mentioned above anyway, and then open extracted assets in specific build.</div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+									<hr width="100%" size="1" class="hrcolor" />
+									<div style="overflow: auto; width: 100%;">
+									<a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=dlattach;topic=9302.0;attach=6278;image" id="link_6278" onclick="return expandThumb(6278);"><img src="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=dlattach;topic=9302.0;attach=6279;image" alt="" id="thumb_6278" border="0" style="max-width: 100%;" /></a><br />
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=dlattach;topic=9302.0;attach=6278"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/clip.gif" align="middle" alt="*" border="0" />&nbsp;Clipboard01.jpg</a> (128.99 KB, 2554x1239 - viewed 1125 times.)<br />
+									</div>
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_49382">
+									&#171; <i>Last Edit: November 22, 2025, 05:19 by spiritovod</i> &#187;
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 1px 1px 0 1px;">
+		<a name="msg49398"></a>
+		<table width="100%" cellpadding="3" cellspacing="0" border="0">
+			<tr><td class="windowbg2">
+				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
+					<tr>
+						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;" class="msg_author_column">
+							<div class="msg_author_info">
+							<b><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=profile;u=5330" title="View the profile of spiritovod">spiritovod</a></b>
+								<div class="smalltext">Global Moderator<br />Hero Member<br /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/stargmod.gif" alt="*" border="0" /><br />
+								Posts: 3006<br />
+								<br />
+							</div>
+						</div>
+						<div class="msg_author_icons">
+								
+								
+								
+								<br />
+								<a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=profile;u=5330"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/icons/profile_sm.gif" alt="View Profile" title="View Profile" border="0" /></a>
+						</div>
+						</td>
+						<td valign="top" width="85%" height="100%" class="msg_message">
+							<table width="100%" border="0"><tr>
+								<td valign="middle"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;topic=9302.msg49398#msg49398"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/post/xx.gif" alt="" border="0" /></a></td>
+								<td valign="middle">
+									<div style="font-weight: bold;" id="subject_49398">
+										<a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;topic=9302.msg49398#msg49398">Re: [UE4] Final Fantasy XIV Mobile</a>
+									</div>
+									<div class="smalltext">&#171; <b>Reply #1 on:</b> September 16, 2025, 19:22 &#187;</div></td>
+								<td align="right" valign="bottom" height="20" style="font-size: smaller;">
+								</td>
+							</tr></table>
+							<hr width="100%" size="1" class="hrcolor" />
+							<div class="post">Backup for mobile version is available <a href="https://pixeldrain.com/l/3cyoZt5X" target="_blank"><span style="text-decoration: underline;">here</span></a>.<br /><br /><i>Update:</i> Updated backup to version 1.0.22.19 (from Feb 2026). </div>
+						</td>
+					</tr>
+					<tr>
+						<td valign="bottom" class="smalltext" width="85%">
+							<table width="100%" border="0" style="table-layout: fixed;"><tr>
+								<td colspan="2" class="smalltext" width="100%">
+								</td>
+							</tr><tr>
+								<td valign="bottom" class="smalltext last_edited" id="modified_49398">
+									&#171; <i>Last Edit: February 07, 2026, 20:57 by spiritovod</i> &#187;
+								</td>
+								<td align="right" valign="bottom" class="smalltext show_pc">
+									<img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/ip.gif" alt="" border="0" />
+									Logged
+								</td>
+							</tr></table>
+						</td>
+					</tr>
+				</table>
+			</td></tr>
+		</table>
+	</td></tr>
+	<tr><td style="padding: 0 0 1px 0;"></td></tr>
+</table>
+<a name="lastPost"></a>
+
+<table width="100%" cellpadding="3" cellspacing="0" border="0" class="tborder">
+	<tr>
+		<td class="catbg" width="100%">
+			<table cellpadding="3" cellspacing="0" width="100%">
+				<tr class="whitetext">
+					<td class="smalltext navPages">
+						<a name="bot"></a><b>Pages:</b> [<b>1</b>] 
+					</td>
+					<td align="right" style="font-size: smaller;"><a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;action=printpage;topic=9302.0" target="_blank"><img src="https://www.gildor.org/smf/Themes/leviathan_11final/images/english/print.gif" alt="Print" border="0" /></a>&nbsp;
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<script language="JavaScript" type="text/javascript" src="https://www.gildor.org/smf/Themes/default/xml_topic.js"></script>
+<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
+	quickReplyCollapsed = true;
+
+	smf_topic = 9302;
+	smf_start = 0;
+	smf_show_modify = 1;
+
+	// On quick modify, this is what the body will look like.
+	var smf_template_body_edit = '<div id="error_box" style="padding: 4px; color: red;"></div><textarea class="editor" name="message" rows="12" style="width: 94%; margin-bottom: 10px;">%body%</textarea><br /><input type="hidden" name="sc" value="92b9e6031a247a2041f68a9909e7067e" /><input type="hidden" name="topic" value="9302" /><input type="hidden" name="msg" value="%msg_id%" /><div style="text-align: center;"><input type="submit" name="post" value="Save" onclick="return modify_save(\'92b9e6031a247a2041f68a9909e7067e\');" accesskey="s" />&nbsp;&nbsp;<input type="submit" name="cancel" value="Cancel" onclick="return modify_cancel();" /></div>';
+
+	// And this is the replacement for the subject.
+	var smf_template_subject_edit = '<input type="text" name="subject" value="%subject%" size="60" style="width: 99%;"  maxlength="80" />';
+
+	// Restore the message to this after editing.
+	var smf_template_body_normal = '%body%';
+	var smf_template_subject_normal = '<a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;topic=9302.msg%msg_id%#msg%msg_id%">%subject%</a>';
+	var smf_template_top_subject = "Topic: %subject% &nbsp;(Read 3805 times)";
+// ]]></script>
+<table border="0" width="100%" cellpadding="0" cellspacing="0">
+	<tr>
+		<td valign="top" align="right" class="smalltext">
+			<span class="nav"> <a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;topic=9302.0;prev_next=prev#new">&laquo; previous</a> <a href="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;topic=9302.0;prev_next=next#new">next &raquo;</a></span>
+		</td>
+	</tr>
+</table>
+<div style="padding-top: 4px; padding-bottom: 4px; display: flex; align-items: center; flex-wrap: wrap;"></div>
+</form>
+<div class="show_pc" align="right" style="margin-bottom: 1ex;">
+	<form action="https://www.gildor.org/smf/index.php?PHPSESSID=60bd2870d7bb2784ad506f2f5904e494&amp;" method="get" accept-charset="UTF-8" style="padding:0; margin: 0;">
+		<span class="smalltext">Jump to:</span>
+		<select name="jumpto" id="jumpto" onchange="if (this.selectedIndex > 0 &amp;&amp; this.options[this.selectedIndex].value) window.location.href = smf_scripturl + this.options[this.selectedIndex].value.substr(smf_scripturl.indexOf('?') == -1 || this.options[this.selectedIndex].value.substr(0, 1) != '?' ? 0 : 1);">
+			<option value="">Please select a destination:</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="#1">General Category</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="?board=1.0"> => General Discussion</option>
+			<option value="?board=8.0"> ===> Test</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="#2">Русскоязычный Форум</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="?board=2.0"> => UE Viewer (русский форум)</option>
+			<option value="?board=14.0"> ===> Новости</option>
+			<option value="?board=19.0"> ===> Документация</option>
+			<option value="?board=28.0"> ===> ActorX Importer (rus)</option>
+			<option value="?board=26.0"> ===> Unreal-кодинг</option>
+			<option value="?board=25.0"> ===> Проблемы с использованием</option>
+			<option value="?board=42.0"> ===> Unreal engine 4 (rus)</option>
+			<option value="?board=39.0"> ===> Mortal Kombat series (rus)</option>
+			<option value="?board=15.0"> ===> Lineage 2 (rus)</option>
+			<option value="?board=40.0"> ===> Азиатские игры</option>
+			<option value="?board=20.0"> ===> Устаревшие темы</option>
+			<option value="?board=32.0"> => Другие проекты</option>
+			<option value="?board=4.0"> => Разное</option>
+			<option value="?board=34.0"> ===> Локализация и модификация игр</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="#3">English Forum</option>
+			<option value="" disabled="disabled">-----------------------------</option>
+			<option value="?board=3.0"> => UE Viewer (English)</option>
+			<option value="?board=11.0"> ===> News</option>
+			<option value="?board=9.0"> ===> Documentation</option>
+			<option value="?board=29.0"> ===> ActorX Importer</option>
+			<option value="?board=41.0"> ===> Blender</option>
+			<option value="?board=21.0"> ===> Unreal coding</option>
+			<option value="?board=37.0"> ===> UE Viewer source code</option>
+			<option value="?board=16.0"> ===> Usage problems</option>
+			<option value="?board=12.0"> ===> Epic Games titles</option>
+			<option value="?board=38.0"> ===> Unreal engine 4</option>
+			<option value="?board=44.0"> ===> Unreal engine 5</option>
+			<option value="?board=13.0"> ===> Mass Effect</option>
+			<option value="?board=24.0"> ===> Bioshock</option>
+			<option value="?board=36.0" selected="selected"> ===> iOS and Android games</option>
+			<option value="?board=10.0"> ===> Lineage 2</option>
+			<option value="?board=43.0"> =====> REVERSECODE</option>
+			<option value="?board=33.0"> ===> Asian games</option>
+			<option value="?board=17.0"> ===> Other games</option>
+			<option value="?board=18.0"> ===> Obsolete topics</option>
+			<option value="?board=31.0"> => Other projects</option>
+			<option value="?board=5.0"> => Miscellaneous</option>
+			<option value="?board=22.0"> ===> UE game localization and modding</option>
+			<option value="?board=23.0"> ===> Looking for resources</option>
+		</select>&nbsp;
+		<input type="button" value="go" onclick="if (this.form.jumpto.options[this.form.jumpto.selectedIndex].value) window.location.href = 'https://www.gildor.org/smf/index.php' + this.form.jumpto.options[this.form.jumpto.selectedIndex].value;" />
+	</form>
+</div>
+<br /><!--Footers--><!--End Footers-->
+			</td>
+		</tr>
+	</table>
+	<table id="footersection" cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+				<td class="whitetext" align="center"><span class="smalltext">
+		<span class="smalltext" style="display: inline; visibility: visible; font-family: Verdana, Arial, sans-serif;"><a href="http://www.simplemachines.org/" title="Simple Machines Forum" target="_blank">Powered by SMF</a> |
+<a href="http://www.simplemachines.org/about/copyright.php" title="Free Forum Software" target="_blank">SMF &copy; 2006-2009, Simple Machines LLC</a>
+		</span> <br />
+				<strong>Leviathan</strong> design by <a href="http://www.tinyportal.net">Bloc</a> |
+					<a href="http://validator.w3.org/check/referer" target="_blank">XHTML</a> |
+					<a href="http://jigsaw.w3.org/css-validator/check/referer" target="_blank">CSS</a>
+				</span>
+			</td>
+		</tr>
+	</table>
+	</div>
+	<div id="ajax_in_progress" style="display: none;">Loading...</div>
+</body></html>
